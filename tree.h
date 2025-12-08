@@ -29,24 +29,27 @@ using namespace std;
    Only placeholders and TODO comments.
 */
 
-//test 2
 
-
-template <typename U>
-class Node {
-public:
-    string id;
-    U data;
-    vector<Node<U>*> children;
+//changed string to int and class to struct for node implementation
+//added parent nodes
+template <typename T>
+struct Node {
+    int id;
+    T data;
+    vector<Node<T>*> children;
+    vector<Node<T>*> parents;
 
     // TODO: Write constructor
-    // Node(const string &nodeID, const U &value);
+    //node = int
+    Node(int nodeID, const T &value);
 };
 
 template <typename T>
 class Tree {
 private:
     Node<T>* root;
+    //store nodes
+    unordered_map<int, Node<T>*> nodes;
 
 public:
     Tree();
