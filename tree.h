@@ -40,7 +40,7 @@ struct Node {
     vector<Node<T>*> parents;
 
     // TODO: Write constructor
-    //node = int
+    //node is a int
     Node(int nodeID, const T &value);
 };
 

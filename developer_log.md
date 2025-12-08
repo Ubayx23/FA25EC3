@@ -10,4 +10,4 @@
   node structure in tree.h as it was calling for string
   and U instead of int and T. Still understanding the layout
   so I just added a map in the Tree class for storing nodes.
-  No logic today, hoping to add that tmr.
+  No logic today, hoping to add that tmr..
