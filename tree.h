@@ -31,12 +31,12 @@ using namespace std;
 
 
 //changed string to int and class to struct for node implementation
-//added parent nodes
 template <typename T>
 struct Node {
     int id;
     T data;
     vector<Node<T>*> children;
+    //added parent nodes
     vector<Node<T>*> parents;
 
     // TODO: Write constructor
@@ -55,14 +55,15 @@ public:
     Tree();
     // TODO: Initialize root pointer to nullptr
 
-    void createRoot(const string &id, const T &value);
+    void createRoot(int id, const T &value);
     // TODO: Allocate memory, assign id, assign data, set as root
 
-    void addNode(const string &parentID, const string &childID, const T &value);
+    void addNode(int parentID, int childID, const T &value);
     // TODO: Find parent, create child, link parent to child
     // TODO: Support repeated children under multiple parents
 
-    Node<T>* findNode(const string &id);
+
+    Node<T>* findNode(int id);
     // TODO: Use DFS or BFS to search tree
 
     void printAll();
@@ -71,5 +72,13 @@ public:
     ~Tree();
     // TODO: Free all allocated memory
 };
+template<typename T>
+void Tree<T>::createRoot(int id, const T &value) {
+    Node<T>* node = new Node<T>(id, value);
+    root = node;
+    nodes[id] = node;
+}
+
+
 
 #endif //FA25EC3_TREE_H
