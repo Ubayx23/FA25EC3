@@ -72,12 +72,26 @@ public:
     ~Tree();
     // TODO: Free all allocated memory
 };
+//Setting root pntr to null
+template <typename T>
+Tree<T>::Tree() {
+    root = nullptr;
+}
+
+//making first node in tree the root and storing
 template<typename T>
 void Tree<T>::createRoot(int id, const T &value) {
     Node<T>* node = new Node<T>(id, value);
     root = node;
     nodes[id] = node;
 }
+//creating node by allocating memory, assigning id and data
+template<typename T>
+Node<T>::Node(int nodeID, const T &value) {
+    id = nodeID;
+    data = value;
+}
+
 
 
 
