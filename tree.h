@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -66,6 +67,9 @@ public:
     Node<T>* findNode(int id);
     // TODO: Use DFS or BFS to search tree
 
+    Node<T>* dfs(Node<T>* current, int id, unordered_set<int> &visited);
+    // TODO: implement helper
+
     void printAll();
     // TODO: Print entire structure in readable form
 
@@ -90,6 +94,15 @@ template<typename T>
 Node<T>::Node(int nodeID, const T &value) {
     id = nodeID;
     data = value;
+}
+//
+template<typename T>
+Node<T>* Tree<T>::findNode(int id) {
+    if (!root) {
+        return nullptr;
+    }
+    unordered_set<int> visited;
+    return dfs(root, id, visited);
 }
 
 
