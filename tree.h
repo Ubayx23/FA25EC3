@@ -176,8 +176,12 @@ Node<T> *Tree<T>::dfs(Node<T> *current, int id, unordered_set<int> &visited) {
 //print all
 template<typename T>
 void Tree<T>::printAll() {
-    for (auto &pair : nodes) { //unordered map
-        Node<T>* node = pair.second;
+    vector<int> ordered; //create list
+    for (auto &pair : nodes) ordered.push_back(pair.first); // loop through list
+    sort(ordered.begin(), ordered.end()); // order ID's
+
+    for (int id : ordered) { // loop through
+        Node<T>* node = nodes[id]; //fetches node
 
         //print node
         cout << "Node: " << node->id << ": " << node->data << endl;

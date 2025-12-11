@@ -104,7 +104,7 @@ int main() {
     string apiKey;
     getline(cin, apiKey);
 
-    string filename = runCurlToOpenAI(apiKey);
+    string filename = "story.txt";
 
     vector<StoryNodeRaw> rawNodes = parseStoryFile(filename);
     if (rawNodes.empty()) {
@@ -118,13 +118,19 @@ int main() {
     adventureTree.createRoot(stoi(rawNodes[0].id), rawNodes[0].text);
 
     // TODO: Students, add all remaining nodes
-     for (int i = 1; i < rawNodes.size(); i++) {
+     for (int i = 0; i < rawNodes.size(); i++) {
          for (string childID : rawNodes[i].children) {
+            string childText = "";
+             for (auto &node : rawNodes) {
+                 if (node.id == childID) {
+                     childText = node.text;
+                     break;
+                 }
+             }
              adventureTree.addNode(
-                 stoi(rawNodes[i].id), //stoi converts string to int
+                 stoi(rawNodes[i].id),
                  stoi(childID),
-                 rawNodes[i].text
-         );
+                 childText);
          }
      }
 
@@ -146,6 +152,6 @@ int main() {
     cout << "Implement the Tree class to enable traversal and printing." << endl;
 
     // TODO: Once implemented, uncomment to allow full gameplay.
-     adventureTree.playGame();
+     adventureTree.printAll();
     return 0;
 }
