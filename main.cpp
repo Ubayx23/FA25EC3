@@ -119,7 +119,7 @@ int main() {
 
     // TODO: Students, add all remaining nodes
      for (int i = 0; i < rawNodes.size(); i++) {
-         for (string childID : rawNodes[i].children) {
+         for (const string &childID : rawNodes[i].children) {
             string childText = "";
              for (auto &node : rawNodes) {
                  if (node.id == childID) {
