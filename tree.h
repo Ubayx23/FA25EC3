@@ -148,7 +148,13 @@ void Tree<T>::printAll() {
         cout << endl; //line
     }
 }
+//no memory leaks
+template<typename T>
+Tree<T>::~Tree() {
+    delete root;
+}
 
+//addNode
 template<typename T>
 void Tree<T>::addNode(int parentID, int childID, const T &value) {
 
@@ -157,14 +163,14 @@ void Tree<T>::addNode(int parentID, int childID, const T &value) {
 
     Node<T>* child = findNode(childID);
 
-    if (!child) { // if child doesnt exist we create one
+    if (!child) { // if child doesn't exist we create one
         child = new Node<T>(childID, value);
         nodes[childID] = child;
     }
+    //connecting parent and child
+    parent->children.push_back(child);
+    child->parents.push_back(parent);
 }
-
-
-
 
 
 
