@@ -138,17 +138,31 @@ void Tree<T>::printAll() {
         cout << "Node: " << node->id << ": " << node->data << endl;
 
         //check for children
-        if (node->children.empty() > 0) {
+        if (node->children.empty()) {
             cout << " child -> (none)" << endl;
         }else { // print all children
             for (Node<T>* child : node->children) {
                 cout << " Child -> " << child->id << endl;
-                printAll(child);
             }
         }
         cout << endl; //line
     }
 }
+
+template<typename T>
+void Tree<T>::addNode(int parentID, int childID, const T &value) {
+
+    Node<T>* parent = findNode(parentID); //search for parent
+    if (!parent) return;
+
+    Node<T>* child = findNode(childID);
+
+    if (!child) { // if child doesnt exist we create one
+        child = new Node<T>(childID, value);
+        nodes[childID] = child;
+    }
+}
+
 
 
 
