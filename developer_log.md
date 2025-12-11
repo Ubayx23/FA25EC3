@@ -40,5 +40,5 @@
     moved through the story the right way. At this point the tree builds correctly, prints
     correctly, and the gameplay works.
 
-  - Files I worked on today: tree.h, tree.cpp, main.cpp (just connecting the functions),
+  - Files I worked on today: tree.h, tree.cpp, main.cpp
     and story.txt for testing.

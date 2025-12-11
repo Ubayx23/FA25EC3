@@ -153,5 +153,6 @@ int main() {
 
     // TODO: Once implemented, uncomment to allow full gameplay.
      adventureTree.printAll();
+    adventureTree.playGame();
     return 0;
 }
