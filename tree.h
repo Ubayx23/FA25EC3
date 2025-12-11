@@ -9,6 +9,9 @@
 #include <string>
 #include <unordered_set>
 #include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
 using namespace std;
 
 /*
@@ -41,9 +44,14 @@ struct Node {
     vector<Node<T>*> parents;
 
     // TODO: Write constructor
-    //node is a int
     Node(int nodeID, const T &value);
 };
+//node is a int
+template <typename T>
+Node<T>::Node(int nodeID, const T &value) {
+    id = nodeID;
+    data = value;
+}
 
 template <typename T>
 class Tree {
@@ -151,7 +159,9 @@ void Tree<T>::printAll() {
 //no memory leaks
 template<typename T>
 Tree<T>::~Tree() {
-    delete root;
+    for (auto &pair : nodes) {
+        delete pair.second;
+    };
 }
 
 //addNode
