@@ -92,6 +92,41 @@ Tree<T>::Tree() {
     root = nullptr;
 }
 
+template<typename T>
+void Tree<T>::playGame() {
+    if (!root) {
+        cout << "No story loaded." << endl;
+        return;
+    }
+
+    Node<T>* current = root;
+
+    while (true) {
+        cout << current->data << endl;
+
+        if (current->children.empty()) {
+            cout << "Journey ends here" << endl;
+            break;
+        }
+
+        cout<< "Choose next action" << endl;
+        for (int i = 0; i < current->children.size(); i++) {
+            cout << i + 1 << ". " << current->children[i]->data << endl;
+        }
+
+        int choice;
+        cin >> choice;
+
+        if (choice < 1 || choice > current->children.size()) {
+            cout << "Invalid choice." << endl;
+            continue;
+        }
+
+        current = current->children[choice-1];
+    }
+}
+
+
 //making first node in tree the root and storing
 template<typename T>
 void Tree<T>::createRoot(int id, const T &value) {
