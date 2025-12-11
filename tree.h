@@ -104,6 +104,7 @@ Node<T>* Tree<T>::findNode(int id) {
     unordered_set<int> visited;
     return dfs(root, id, visited);
 }
+//dfs
 template<typename T>
 Node<T> *Tree<T>::dfs(Node<T> *current, int id, unordered_set<int> &visited) {
     if (!current) {
@@ -127,6 +128,19 @@ Node<T> *Tree<T>::dfs(Node<T> *current, int id, unordered_set<int> &visited) {
     }
     return nullptr;
 }
+//print all
+template<typename T>
+void Tree<T>::printAll() {
+    for (auto &pair : nodes) { //unordered map
+        Node<T>* node = pair.second;
+
+        //print node
+        cout << "Node: " << node->id << ": " << node->data << endl;
+
+    }
+}
+
+
 
 
 
