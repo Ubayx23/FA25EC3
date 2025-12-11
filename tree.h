@@ -137,6 +137,16 @@ void Tree<T>::printAll() {
         //print node
         cout << "Node: " << node->id << ": " << node->data << endl;
 
+        //check for children
+        if (node->children.empty() > 0) {
+            cout << " child -> (none)" << endl;
+        }else { // print all children
+            for (Node<T>* child : node->children) {
+                cout << " Child -> " << child->id << endl;
+                printAll(child);
+            }
+        }
+        cout << endl; //line
     }
 }
 
