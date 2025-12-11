@@ -95,7 +95,7 @@ Node<T>::Node(int nodeID, const T &value) {
     id = nodeID;
     data = value;
 }
-//
+//direct node
 template<typename T>
 Node<T>* Tree<T>::findNode(int id) {
     if (!root) {
@@ -104,6 +104,18 @@ Node<T>* Tree<T>::findNode(int id) {
     unordered_set<int> visited;
     return dfs(root, id, visited);
 }
+template<typename T>
+Node<T> *Tree<T>::dfs(Node<T> *current, int id, unordered_set<int> &visited) {
+    if (!current) {
+        return nullptr; // nothing
+    }
+
+    if (visited.count(current->id)) {
+        return nullptr; //visited
+    }
+    visited.insert(current->id);
+}
+
 
 
 
