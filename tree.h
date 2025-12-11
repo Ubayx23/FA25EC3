@@ -114,6 +114,18 @@ Node<T> *Tree<T>::dfs(Node<T> *current, int id, unordered_set<int> &visited) {
         return nullptr; //visited
     }
     visited.insert(current->id);
+
+    if (current->id == id) {
+        return current; //check current node
+    }
+
+    for (Node<T>* child : current->children) {
+        Node<T>* result = dfs(child, id, visited);
+        if (result != nullptr) {
+            return result; // if found
+        }
+    }
+    return nullptr;
 }
 
 
