@@ -46,12 +46,7 @@ struct Node {
     // TODO: Write constructor
     Node(int nodeID, const T &value);
 };
-//node is a int
-template <typename T>
-Node<T>::Node(int nodeID, const T &value) {
-    id = nodeID;
-    data = value;
-}
+
 
 template <typename T>
 class Tree {
@@ -60,7 +55,10 @@ private:
     //store nodes
     unordered_map<int, Node<T>*> nodes;
 
+
 public:
+
+
     Tree();
     // TODO: Initialize root pointer to nullptr
 
@@ -81,8 +79,12 @@ public:
     void printAll();
     // TODO: Print entire structure in readable form
 
+    void playGame();
+
     ~Tree();
     // TODO: Free all allocated memory
+
+
 };
 //Setting root pntr to null
 template <typename T>
@@ -181,7 +183,6 @@ void Tree<T>::addNode(int parentID, int childID, const T &value) {
     parent->children.push_back(child);
     child->parents.push_back(parent);
 }
-
 
 
 
